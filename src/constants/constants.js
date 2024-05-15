@@ -1,0 +1,7 @@
+const PUMP_FUN_PROGRAM_ID = '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P';
+const TOKEN_MINT_ADDRESS = '9LFUtDdTqtnT1cp4FAkeNeGMrkmfrCvWiqpJHUtkHPrG';
+
+export {
+  PUMP_FUN_PROGRAM_ID,
+  TOKEN_MINT_ADDRESS
+};

@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.26.0",
+    "@project-serum/anchor": "^0.26.0",
+    "@solana/spl-token": "^0.1.8",
+    "@solana/web3.js": "^1.60.0",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.4.5"
+  }
+}
