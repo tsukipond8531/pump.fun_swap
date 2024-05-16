@@ -1,7 +1,6 @@
 {
-  "type": "module",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "tsc && node ./built/index.js"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.26.0",
@@ -9,6 +8,8 @@
     "@solana/spl-token": "^0.1.8",
     "@solana/web3.js": "^1.60.0",
     "bn.js": "^5.2.1",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.1"
   }
 }

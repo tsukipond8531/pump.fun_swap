@@ -1,4 +1,6 @@
-const idl = {
+import { Idl } from "@coral-xyz/anchor";
+
+const idl: Idl = {
   "version": "0.1.0",
   "name": "pump",
   "instructions": [

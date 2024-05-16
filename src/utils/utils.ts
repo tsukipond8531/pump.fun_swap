@@ -1,8 +1,5 @@
-import { Keypair, PublicKey } from '@solana/web3.js';
+import { Keypair, PublicKey, Connection } from '@solana/web3.js';
 import { Token, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID } from '@solana/spl-token';
-import dotenv from "dotenv";
-
-dotenv.config();
 
 /**
  * 
@@ -11,7 +8,7 @@ dotenv.config();
  * @param {*} tokenMintAddress : PublicKey
  * @returns Boolean
  */
-const checkAssociatedTokenAcount = async (connection, walletPublicKey, tokenMintAddress) => {
+const checkAssociatedTokenAcount = async (connection: Connection, walletPublicKey: PublicKey, tokenMintAddress: PublicKey) => {
   try {
     // Get the associated token address for your wallet and token mint
     const associatedTokenAddress = await Token.getAssociatedTokenAddress(
@@ -40,7 +37,7 @@ const checkAssociatedTokenAcount = async (connection, walletPublicKey, tokenMint
  * @param {*} owner : Keypair
  * @returns {*} address : String
  */
-const createAssociatedTokenAccount = async (connection, owner, mintPublicKey) => {
+const createAssociatedTokenAccount = async (connection: Connection, owner: Keypair, mintPublicKey: PublicKey) => {
   // Get the associated token account address for the wallet
   const associatedTokenAddress = await Token.getAssociatedTokenAddress(
     ASSOCIATED_TOKEN_PROGRAM_ID,
@@ -66,7 +63,7 @@ const createAssociatedTokenAccount = async (connection, owner, mintPublicKey) =>
  * @param {*} tokenMintAddress : PublicKey
  * @returns 
  */
-const findAssociatedTokenAddress = (walletAddress, tokenMintAddress) => {
+const findAssociatedTokenAddress = (walletAddress: PublicKey, tokenMintAddress: PublicKey) => {
   const [result] = PublicKey.findProgramAddressSync([
     walletAddress.toBuffer(),
     TOKEN_PROGRAM_ID.toBuffer(),
@@ -75,8 +72,19 @@ const findAssociatedTokenAddress = (walletAddress, tokenMintAddress) => {
   return result;
 };
 
+const getDetailsFromTokenMint = async (tokenMintAddress: string) => {
+  const response = await fetch(`https://client-api-2-74b1891ee9f9.herokuapp.com/coins/${tokenMintAddress}`);
+  const details = await response.json();
+
+  return {
+    bondingCurve: details.bonding_curve,
+    associatedBondingCurve: details.associated_bonding_curve
+  };
+}
+
 export {
   createAssociatedTokenAccount,
   findAssociatedTokenAddress,
-  checkAssociatedTokenAcount
+  checkAssociatedTokenAcount,
+  getDetailsFromTokenMint
 };
