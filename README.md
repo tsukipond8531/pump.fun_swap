@@ -21,13 +21,13 @@ Running command:
 # Output
 Here, I would like to show the output of this project.
 
-![image](wallet.png) <br/>
+![image](imgs/wallet.png) <br/>
 This is the image of my wallet (phantom)
 
 
-![image](token_account.png)<br/>
+![image](imgs/token_account.png)<br/>
 This is the image of my account for tokens.
 
 
-![image](transaction.png)<br/>
+![image](imgs/transaction.png)<br/>
 This is the image of transaction details
